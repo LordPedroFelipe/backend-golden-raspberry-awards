@@ -2,6 +2,8 @@ import request from 'supertest';
 import { Connection, createConnection } from 'typeorm';
 import app from '../../app';
 import { Movie } from '../../entities/Movie';
+import { loadMoviesFromCSV } from './../../utils/csvReader';
+
 
 let connection: Connection;
 
@@ -15,12 +17,7 @@ beforeAll(async () => {
     logging: false,
   });
   
-  await connection.getRepository(Movie).save([
-    { title: 'Movie 1', producer: 'Producer A', year: 1980, winner: true },
-    { title: 'Movie 2', producer: 'Producer B', year: 1990, winner: true },
-    { title: 'Movie 3', producer: 'Producer A', year: 2000, winner: true },
-    { title: 'Movie 4', producer: 'Producer B', year: 2010, winner: true },
-  ]);
+  await loadMoviesFromCSV('movielist.csv');
 });
 
 afterAll(async () => {
