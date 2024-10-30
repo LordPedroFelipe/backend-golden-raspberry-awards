@@ -7,7 +7,7 @@ Golden Raspberry Awards
 
 1. Clone o repositório:
    ```bash
-   git clone <URL>
+   git clone https://github.com/LordPedroFelipe/backend-golden-raspberry-awards.git
 
 2. Instale as dependências:
     npm install
